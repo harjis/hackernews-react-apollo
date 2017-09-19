@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { graphql, gql } from 'react-apollo';
 
 class CreateLink extends Component {
   state = {
@@ -33,8 +34,27 @@ class CreateLink extends Component {
   }
 
   _createLink = async () => {
-    // ... you'll implement this in a bit
+    const { description, url } = this.state;
+    await this.props.createLinkMutation({
+      variables: {
+        description,
+        url
+      }
+    });
   };
 }
 
-export default CreateLink;
+const CREATE_LINK_MUTATION = gql`
+    mutation CreateLinkMutation($description: String!, $url: String!) {
+        createLink(
+            description: $description,
+            url: $url,
+        ) {
+            id
+            url
+            description
+        }
+    }
+`;
+
+export default graphql(CREATE_LINK_MUTATION, { name: 'createLinkMutation' })(CreateLink);
