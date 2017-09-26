@@ -6,6 +6,10 @@
   version "0.10.2"
   resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.10.2.tgz#d7c79acbaa17453b6681c80c34b38fcb10c4c08c"
 
+"@types/graphql@^0.9.1":
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/@types/graphql/-/graphql-0.9.4.tgz#cdeb6bcbef9b6c584374b81aa7f48ecf3da404fa"
+
 abab@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/abab/-/abab-1.0.3.tgz#b81de5f7274ec4e756d797cd834f303642724e5d"
@@ -164,13 +168,91 @@ apollo-client@^1.4.0:
   optionalDependencies:
     "@types/graphql" "0.10.2"
 
-apollo-link-core@^0.5.0:
+apollo-fetch@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/apollo-fetch/-/apollo-fetch-0.6.0.tgz#aae9b28c117af344b091ec8ba4d1a5aa0474dc5d"
+  dependencies:
+    isomorphic-fetch "^2.2.1"
+
+apollo-link-batch-http@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/apollo-link-batch-http/-/apollo-link-batch-http-0.1.4.tgz#f819d138c27d29b8b1ef5e54965d2ba5db4d6ea8"
+  dependencies:
+    apollo-fetch "^0.6.0"
+    apollo-link-batch "^0.1.4"
+    apollo-link-core "^0.5.4"
+    graphql "^0.10.5"
+
+apollo-link-batch@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/apollo-link-batch/-/apollo-link-batch-0.1.4.tgz#5526e87330fb09146b3bbf131e2ca47c19c5b812"
+  dependencies:
+    apollo-fetch "^0.6.0"
+    apollo-link-core "^0.5.4"
+    graphql "^0.10.5"
+
+apollo-link-core@^0.5.0, apollo-link-core@^0.5.4:
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/apollo-link-core/-/apollo-link-core-0.5.4.tgz#8efd4cd747959872a32f313f0ccfc2a76b396668"
   dependencies:
     graphql "^0.10.3"
     graphql-tag "^2.4.2"
     zen-observable-ts "^0.4.4"
+
+apollo-link-dedup@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/apollo-link-dedup/-/apollo-link-dedup-0.3.4.tgz#0286fe17bb63e67aa9f04d6bb1e15838e5e4d274"
+  dependencies:
+    apollo-fetch "^0.6.0"
+    apollo-link-core "^0.5.4"
+    graphql "^0.10.5"
+
+apollo-link-http@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/apollo-link-http/-/apollo-link-http-0.5.4.tgz#934d80379c99b3cc72d7b8267c9fd32de5243be0"
+  dependencies:
+    apollo-fetch "^0.6.0"
+    apollo-link-core "^0.5.4"
+    graphql "^0.10.5"
+
+apollo-link-polling@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/apollo-link-polling/-/apollo-link-polling-0.5.4.tgz#1487df5f8f034dcb99f0f1988bb5d4076e07ab12"
+  dependencies:
+    apollo-link-core "^0.5.4"
+
+apollo-link-retry@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/apollo-link-retry/-/apollo-link-retry-0.5.4.tgz#43fdbf2b685b5ad266adc18f2b7a2881ae787449"
+  dependencies:
+    apollo-link-core "^0.5.4"
+
+apollo-link-set-context@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/apollo-link-set-context/-/apollo-link-set-context-0.5.4.tgz#275002474c6e39465bb46a9ffe51f1830c1cb40c"
+  dependencies:
+    apollo-link-core "^0.5.4"
+
+apollo-link-ws@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/apollo-link-ws/-/apollo-link-ws-0.3.4.tgz#68860b8a9283df33d75a14c87e04a81d764244bd"
+  dependencies:
+    apollo-link-core "^0.5.4"
+    subscriptions-transport-ws "^0.8.2"
+
+apollo-link@^0.5.4:
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/apollo-link/-/apollo-link-0.5.4.tgz#55ebca71b933538ce77bda489a7503fa21a6d83b"
+  dependencies:
+    apollo-link-batch "^0.1.4"
+    apollo-link-batch-http "^0.1.4"
+    apollo-link-core "^0.5.4"
+    apollo-link-dedup "^0.3.4"
+    apollo-link-http "^0.5.4"
+    apollo-link-polling "^0.5.4"
+    apollo-link-retry "^0.5.4"
+    apollo-link-set-context "^0.5.4"
+    apollo-link-ws "^0.3.4"
 
 append-transform@^0.4.0:
   version "0.4.0"
@@ -2841,11 +2923,19 @@ graphql-anywhere@^3.0.1:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/graphql-anywhere/-/graphql-anywhere-3.1.0.tgz#3ea0d8e8646b5cee68035016a9a7557c15c21e96"
 
+graphql-subscriptions@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/graphql-subscriptions/-/graphql-subscriptions-0.4.4.tgz#39cff32d08dd3c990113864bab77154403727e9b"
+  dependencies:
+    "@types/graphql" "^0.9.1"
+    es6-promise "^4.0.5"
+    iterall "^1.1.1"
+
 graphql-tag@^2.0.0, graphql-tag@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.4.2.tgz#6a63297d8522d03a2b72d26f1b239aab343840cd"
 
-graphql@^0.10.0, graphql@^0.10.3:
+graphql@^0.10.0, graphql@^0.10.3, graphql@^0.10.5:
   version "0.10.5"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.10.5.tgz#c9be17ca2bdfdbd134077ffd9bbaa48b8becd298"
   dependencies:
@@ -3436,7 +3526,7 @@ isobject@^2.0.0:
   dependencies:
     isarray "1.0.0"
 
-isomorphic-fetch@^2.1.1:
+isomorphic-fetch@^2.1.1, isomorphic-fetch@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
   dependencies:
@@ -5978,6 +6068,21 @@ style-loader@0.18.2:
   dependencies:
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
+
+subscriptions-transport-ws@^0.8.2:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/subscriptions-transport-ws/-/subscriptions-transport-ws-0.8.3.tgz#d4b22db7f5951bd30e7c6f4dc4774d34ed9f1751"
+  dependencies:
+    backo2 "^1.0.2"
+    eventemitter3 "^2.0.3"
+    graphql-subscriptions "^0.4.4"
+    graphql-tag "^2.4.2"
+    iterall "^1.1.1"
+    lodash.assign "^4.2.0"
+    lodash.isobject "^3.0.2"
+    lodash.isstring "^4.0.1"
+    symbol-observable "^1.0.4"
+    ws "^3.0.0"
 
 subscriptions-transport-ws@^0.9.0:
   version "0.9.0"
