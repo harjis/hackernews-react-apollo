@@ -4,6 +4,47 @@ import { graphql, gql } from 'react-apollo';
 import Link from './Link';
 
 class LinkList extends Component {
+  componentDiDMount() {
+    this._subscribeToNewLinks();
+  }
+
+  _subscribeToNewLinks = () => {
+    this.props.allLinksQuery.subscribeToMore({
+      document: gql`
+          subscription {
+              Link(filter: {
+                  mutation_in: [CREATED]
+              }) {
+                  node {
+                      id
+                      url
+                      description
+                      createdAt
+                      postedBy {
+                          id
+                          name
+                      }
+                      votes {
+                          id
+                          user {
+                              id
+                          }
+                      }
+                  }
+              }
+          }
+      `,
+      updateQuery: (previous, { subscriptionData }) => {
+        const newAllLinks = [subscriptionData.data.Link.node, ...previous.allLinks];
+        const result = {
+          ...previous,
+          allLinks: newAllLinks
+        };
+        return result;
+      }
+    });
+  };
+
   _updateCacheAfterVote = (store, createVote, linkId) => {
     const data = store.readQuery({ query: ALL_LINKS_QUERY });
     const votedLink = data.allLinks.find(link => link.id === linkId);
